@@ -12,4 +12,4 @@ function stayinAlive() {
     })
 }
 
-export default stayinAlive;
+module.exports = stayinAlive;
