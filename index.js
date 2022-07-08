@@ -24,12 +24,8 @@ client.on("ready", () => {
 })
 
 client.on("messageCreate", msg => {
-    //Greetings
-    if (msg.content.toLowerCase().startsWith("hi") || msg.content.toLowerCase().startsWith("hello") || msg.content.toLowerCase().startsWith("hey") || msg.content.toLowerCase().startsWith("what up") || msg.content.toLowerCase().startsWith("how's going")) {
-        msg.reply(`Hello ${msg.author} ! I'm Torvald Bot. It's pleasure to meet you.\n\nType '$info' if you want to learn more about me.`)
-    };
 
-    if (!msg.content.startsWith(prefix) || msg.author.bot) msg.channel.send("It is not a valid command. Please type '$info' to see the commands.");
+    if (!msg.content.startsWith(prefix) || msg.author.bot) return;
     const args = msg.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
@@ -49,7 +45,7 @@ client.on("messageCreate", msg => {
     };
 
     //Reddit
-    if (msg.content.startsWith("$reddit")) {
+    if (command.startsWith("$reddit")) {
         let subreddit = msg.content.split("$reddit ")[1]
         meme(subreddit)
             .then(data => {
