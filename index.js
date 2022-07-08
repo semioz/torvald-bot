@@ -1,4 +1,5 @@
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 import Discord from "discord.js";
 import fetch from 'node-fetch';
 import stayinAlive from "./server.js";
@@ -6,33 +7,15 @@ const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 import translate from "@iamtraction/google-translate";
 import { MessageEmbed } from "discord.js";
 import { meme } from "memejs";
+import getQuote from "./commands/quote.js";
+import getBtc from "./commands/btc.js";
 
 const infoEmbed = new MessageEmbed()
     .setColor('#143F6B')
     .setTitle('Commands')
     .setURL('https://github.com/semihberkayozturk/Torvald-Bot')
     .setAuthor({ name: 'Torvald Bot', url: 'https://discord.js.org' })
-    .addFields({ name: '$info', value: 'Learn more details about Torvald Bot.' }, { name: '$inspire', value: "Torvald Bot sends inspirational quotes  from the world's most important philosiphers, inventors, scientists, religious figures, and leaders throughout history." }, { name: '$creator', value: 'Social media accounts of the creator of Torvald Bot.' }, { name: '$guess <value>', value: 'Try to guess the number which is between 1 and 10' }, { name: '$pomodoro', value: "Torvald Bot starts a 25 minutes long Pomodoro session and sends you a message when it's finished." }, { name: '$translate <text>', value: "With this command, Torvald Bot detects the language you've written and translates it to English." }, { name: '$bitcoin', value: "Current price of Bitcoin." }, { name: '$meme', value: "Torvald Bot shows programming memes." })
-
-function getQuote() {
-    return fetch("https://zenquotes.io/api/random")
-        .then(res => {
-            return res.json()
-        })
-        .then(data => {
-            return data[0]["q"] + " -" + data[0]["a"]
-        })
-}
-
-function getBtc() {
-    return fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
-        .then(res => {
-            return res.json()
-        })
-        .then(data => {
-            return data["bpi"]["USD"]["rate"]
-        });
-}
+    .addFields({ name: '● $info', value: 'Learn more details about Torvald Bot.' }, { name: '● $inspire', value: "Torvald Bot sends inspirational quotes  from the world's most important philosiphers, inventors, scientists, religious figures, and leaders throughout history." }, { name: '● $creator', value: 'Social media accounts of the creator of Torvald Bot.' }, { name: '● $guess <value>', value: 'Try to guess the number which is between 1 and 10' }, { name: '● $pomodoro', value: "Torvald Bot starts a 25 minutes long Pomodoro session and sends you a message when it's finished." }, { name: '● $translate <text>', value: "With this command, Torvald Bot detects the language you've written and translates it to English." }, { name: '● $bitcoin', value: "Current price of Bitcoin." }, { name: '● $meme', value: "Torvald Bot shows programming memes." }, { name: '● $repo', value: "See the repository of Torvald Bot on GitHub." }, { name: '● $reddit <subreddit name>', value: "Random posts from a reddit subreddit you've chosen except NSFW posts." })
 
 client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}!`)
