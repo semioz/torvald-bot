@@ -58,7 +58,7 @@ client.on("messageCreate", msg => {
                 msg.channel.send({ embeds: [redditEmbed] })
 
             }) //Error Handling
-            .catch(e => msg.reply("For some reason, I am unable to find the post. Would you like to give it a try one more time ?"));
+            .catch(e => msg.reply("For some reason, I'm unable to find the post. Would you like to give it a try one more time ?"));
     };
 
     //Memes
