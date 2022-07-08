@@ -1,4 +1,3 @@
-import Discord from "discord.js";
 import fetch from 'node-fetch';
 
 function getBtc() {

@@ -10,39 +10,42 @@ import { meme } from "memejs";
 import getQuote from "./commands/quote.js";
 import getBtc from "./commands/btc.js";
 
+const prefix = "$";
+
 const infoEmbed = new MessageEmbed()
     .setColor('#143F6B')
     .setTitle('Commands')
     .setURL('https://github.com/semihberkayozturk/Torvald-Bot')
     .setAuthor({ name: 'Torvald Bot', url: 'https://discord.js.org' })
-    .addFields({ name: '● $info', value: 'Learn more details about Torvald Bot.' }, { name: '● $inspire', value: "Torvald Bot sends inspirational quotes  from the world's most important philosiphers, inventors, scientists, religious figures, and leaders throughout history." }, { name: '● $creator', value: 'Social media accounts of the creator of Torvald Bot.' }, { name: '● $guess <value>', value: 'Try to guess the number which is between 1 and 10' }, { name: '● $pomodoro', value: "Torvald Bot starts a 25 minutes long Pomodoro session and sends you a message when it's finished." }, { name: '● $translate <text>', value: "With this command, Torvald Bot detects the language you've written and translates it to English." }, { name: '● $bitcoin', value: "Current price of Bitcoin." }, { name: '● $meme', value: "Torvald Bot shows programming memes." }, { name: '● $repo', value: "See the repository of Torvald Bot on GitHub." }, { name: '● $reddit <subreddit name>', value: "Random posts from a reddit subreddit you've chosen except NSFW posts." })
+    .addFields({ name: '● $info', value: 'dene more details about Torvald Bot.' }, { name: '● $inspire', value: "Torvald Bot sends inspirational quotes  from the world's most important philosiphers, inventors, scientists, religious figures, and leaders throughout history." }, { name: '● $creator', value: 'Social media accounts of the creator of Torvald Bot.' }, { name: '● $guess <value>', value: 'Try to guess the number which is between 1 and 10' }, { name: '● $pomodoro', value: "Torvald Bot starts a 25 minutes long Pomodoro session and sends you a message when it's finished." }, { name: '● $translate <text>', value: "With this command, Torvald Bot detects the language you've written and translates it to English." }, { name: '● $bitcoin', value: "Current price of Bitcoin." }, { name: '● $meme', value: "Torvald Bot shows programming memes." }, { name: '● $repo', value: "See the repository of Torvald Bot on GitHub." }, { name: '● $reddit <subreddit name>', value: "Random posts from a reddit subreddit you've chosen except NSFW posts." })
 
 client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}!`)
 })
 
 client.on("messageCreate", msg => {
+    //Greetings
+    if (msg.content.toLowerCase().startsWith("hi") || msg.content.toLowerCase().startsWith("hello") || msg.content.toLowerCase().startsWith("hey") || msg.content.toLowerCase().startsWith("what up") || msg.content.toLowerCase().startsWith("how's going")) {
+        msg.reply(`Hello ${msg.author} ! I'm Torvald Bot. It's pleasure to meet you.\n\nType '$info' if you want to learn more about me.`)
+    };
 
-    if (msg.author.bot) return
+    if (!msg.content.startsWith(prefix) || msg.author.bot) msg.channel.send("It is not a valid command. Please type '$info' to see the commands.");
+    const args = msg.content.slice(prefix.length).split(/ +/);
+    const command = args.shift().toLowerCase();
 
     //Inspire
-    if (msg.content === "$inspire") {
+    if (command === "inspire") {
         getQuote().then(quote => msg.channel.send(quote))
     };
 
     //Info
-    if (msg.content === "$info") {
+    if (command === "info") {
         msg.channel.send({ embeds: [infoEmbed] })
     };
 
     //Bitcoin
-    if (msg.content === "$bitcoin") {
+    if (command === "bitcoin") {
         getBtc().then(btc => msg.reply(`Current price of Bitcoin is ${String(btc)} Dollars.`))
-    };
-
-    //Greetings
-    if (msg.content.toLowerCase().startsWith("hi") || msg.content.toLowerCase().startsWith("hello") || msg.content.toLowerCase().startsWith("hey") || msg.content.toLowerCase().startsWith("what up") || msg.content.toLowerCase().startsWith("how's going")) {
-        msg.reply(`Hello ${msg.author} ! I'm Torvald Bot. It's pleasure to meet you.\n\nType '$info' if you want to learn more about me.`)
     };
 
     //Reddit
@@ -62,7 +65,7 @@ client.on("messageCreate", msg => {
     };
 
     //Memes
-    if (msg.content === "$meme") {
+    if (command === "meme") {
         meme("ProgrammerHumor").then(data => {
                 const memesEmbed = new MessageEmbed()
                     .setColor("#143F6B")
@@ -74,12 +77,12 @@ client.on("messageCreate", msg => {
             .catch(err => msg.reply("I can't find any memes right now. Please try again."));
     };
     //Creator
-    if (msg.content === "$creator") {
+    if (command === "creator") {
         msg.channel.send("Well, obviously I do have a creator. Check out his accounts and feel free to contact him.\nLinkedIn-->https://www.linkedin.com/in/semihberkayozturk//\nGitHub-->https://github.com/semihberkayozturk")
     };
 
     //Pomodoro
-    if (msg.content === "$pomodoro") {
+    if (command === "pomodoro") {
         msg.channel.send("25 minutes Pomodoro has started !")
 
         function sleep(time) {
@@ -103,7 +106,7 @@ client.on("messageCreate", msg => {
 
     //GitHub
 
-    if (msg.content === "$repo") {
+    if (command === "repo") {
         msg.channel.send("Check out the GitHub repository of Torvald Bot --> https://github.com/semihberkayozturk/Torvald-Bot\n\nNote: Do not forget to give it a star.");
     };
 
