@@ -26,7 +26,7 @@ client.on("ready", () => {
 client.on("messageCreate", msg => {
 
     if (!msg.content.startsWith(prefix) || msg.author.bot) return;
-    const args = msg.content.slice(prefix.length).split(/ +/);
+    const args = msg.content.slice(prefix.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
 
     //Inspire
@@ -45,9 +45,8 @@ client.on("messageCreate", msg => {
     };
 
     //Reddit
-    if (command.startsWith("$reddit")) {
-        let subreddit = msg.content.split("$reddit ")[1]
-        meme(subreddit)
+    if (command === "reddit") {
+        meme(args)
             .then(data => {
                 const redditEmbed = new MessageEmbed()
                     .setColor("#143F6B")
@@ -57,7 +56,7 @@ client.on("messageCreate", msg => {
                 msg.channel.send({ embeds: [redditEmbed] })
 
             }) //Error Handling
-            .catch(e => msg.reply("For some reason, I'm unable to find the post. Would you like to give it a try one more time ?"));
+            .catch(e => msg.reply("For some reason, I'm unable to find a post. Would you like to give it a try one more time ?"));
     };
 
     //Memes
