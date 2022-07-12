@@ -18,8 +18,7 @@ readdirSync("./commands").forEach(async file => {
     const command = await
     import (`./commands/${file}`).then(c => c.default);
     client.commands.set(command.name, command);
-    console.log(command);
-})
+});
 
 stayinAlive()
 client.login(process.env.TOKEN);

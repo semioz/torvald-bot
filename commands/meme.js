@@ -12,6 +12,6 @@ export default {
                     .setTimestamp()
                 msg.channel.send({ embeds: [memesEmbed] })
             }) //Error Handling
-            .catch(err => msg.reply("I can't find any memes right now. Please try again."));
+            .catch(err => msg.reply("I can't find any memes right now. Would you like try again ?"));
     }
 };
