@@ -1,10 +1,9 @@
 export default client => {
-    const prefix = "$"
 
     client.on("messageCreate", msg => {
 
-        if (!msg.content.startsWith(prefix) || msg.author.bot) return;
-        const args = msg.content.slice(prefix.length).trim().split(/ +/);
+        if (!msg.content.startsWith(process.env.PREFIX) || msg.author.bot) return;
+        const args = msg.content.slice((process.env.PREFIX).length).trim().split(/ +/);
         const command = args.shift().toLowerCase();
 
         const commandName = client.commands.get(command)

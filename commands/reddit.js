@@ -1,11 +1,10 @@
 import { meme } from "memejs";
 import { MessageEmbed } from "discord.js";
-const prefix = "$"
 
 export default {
     name: "reddit",
     execute(msg) {
-        let value = msg.content.slice(prefix.length).trim().split(/ +/);
+        let value = msg.content.slice((process.env.PREFIX).length).trim().split(/ +/);
         let subreddit = value[1]
         meme(subreddit).then(data => {
                 const postEmbed = new MessageEmbed()
