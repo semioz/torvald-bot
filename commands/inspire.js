@@ -10,6 +10,6 @@ export default {
             .then(data => {
                 return data[0]["q"] + " -" + data[0]["a"]
             })
-            .then(quote => msg.channel.send(quote));
+            .then(quote => msg.reply(quote));
     }
 };
