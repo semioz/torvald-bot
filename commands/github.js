@@ -10,16 +10,19 @@ export default {
                 return res.json()
             })
             .then(data => {
+                if (data["company"] === null) {
+                    data["company"] = "No Information ❌"
+                }
                 const accountEmbed = new MessageEmbed()
                     .setColor('#143F6B')
                     .setTitle(data["name"])
                     .setThumbnail(data["avatar_url"])
                     .setDescription(data["bio"])
-                    .addFields({ name: "● Followers", value: data["followers"].toString(), }, { name: "● Following", value: data["following"].toString() }, { name: "● Creation Date", value: data["created_at"].slice(0, 10) }, { name: "● Public Repositories", value: data["public_repos"].toString() }, { name: "● Public Gists", value: data["public_gists"].toString() })
+                    .addFields({ name: "● Followers", value: data["followers"].toString(), }, { name: "● Following", value: data["following"].toString() }, { name: "● Creation Date", value: data["created_at"].slice(0, 10) }, { name: "● Public Repositories", value: data["public_repos"].toString() }, { name: "● Public Gists", value: data["public_gists"].toString() }, { name: "● Company", value: data["company"] })
                     .setTimestamp()
                     .setURL(`https://github.com/${values}`)
                 msg.reply({ embeds: [accountEmbed] });
             })
-            .catch(err => msg.reply("This username doesn't exist on GitHub."));
+            .catch(err => console.log(err));
     }
 };
