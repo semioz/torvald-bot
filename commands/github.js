@@ -13,6 +13,9 @@ export default {
                 if (data["company"] === null) {
                     data["company"] = "No Information ❌"
                 }
+                if (data["bio"] === null) {
+                    data["bio"] = ""
+                }
                 const accountEmbed = new MessageEmbed()
                     .setColor('#143F6B')
                     .setTitle(data["name"])
