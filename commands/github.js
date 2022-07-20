@@ -26,6 +26,6 @@ export default {
                     .setURL(`https://github.com/${values}`)
                 msg.reply({ embeds: [accountEmbed] });
             })
-            .catch(err => console.log(err));
+            .catch(err => msg.reply("User doesn't exist on GitHub"));
     }
 };
