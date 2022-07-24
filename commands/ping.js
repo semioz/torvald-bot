@@ -3,8 +3,8 @@ import { MessageEmbed } from "discord.js";
 export default {
     name: "ping",
     execute(msg) {
-        const ping_discord = msg.client.ws.ping
-        const ping_bot = Date.now() - msg.createdTimestamp
+        let ping_discord = msg.client.ws.ping
+        let ping_bot = Date.now() - msg.createdTimestamp
 
         const infoEmbed = new MessageEmbed()
             .setColor('#143F6B')

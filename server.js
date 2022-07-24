@@ -3,7 +3,7 @@ import express from "express";
 const server = express();
 
 server.all("/", (req, res) => {
-    res.send("Bot is up and running.");
+    res.send("Torvald Bot is up and running.");
 })
 
 function stayinAlive() {
