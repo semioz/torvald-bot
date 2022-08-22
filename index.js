@@ -1,9 +1,17 @@
 import dotenv from "dotenv";
 import { readdirSync } from "fs";
 dotenv.config();
+import mongoose from "mongoose";
 import Discord, { Collection } from "discord.js";
 import stayinAlive from "./server.js";
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
+
+//MongoDB Connection
+await mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        console.log("Torvald Bot Successfully Connected to MongoDB")
+    })
+    .catch(err => console.log("Failed to Connect to MongoDB"))
 
 //Event Loader
 readdirSync("./events").forEach(async file => {
