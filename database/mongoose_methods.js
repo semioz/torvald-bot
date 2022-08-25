@@ -1,11 +1,11 @@
 import Message from "./message_schema.js";
 
-export const fetch = async(message_id) => {
+export const fetch = async(message_id, message) => {
     let message_db = await Message.findOne({ message_id })
 
     if (message_db) return message_db
     else {
-        message_db = new Message({ message_id })
+        message_db = new Message({ message_id, message })
         await message_db.save()
         return message_db
     }
@@ -17,7 +17,7 @@ export const fetchAll = async(filter = {}) => {
 
 //Update the object
 export const update = async(message_id, update_id) => {
-        const output = await Message.updateOne({ message_id }, update_id, { upsert: true })
+        await Message.updateOne({ message_id }, update_id, { upsert: true })
 
     }
     //Delete an object
