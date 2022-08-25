@@ -4,6 +4,6 @@ export default {
     async execute(msg) {
         let value = msg.content.slice(7)
         await msg.client.database.fetch((Math.floor(Math.random() * 2147483647)).toString(), value)
-        await msg.channel.send(`Thanks for the feedback. My developer will work on it ${msg.author}`)
+        await msg.channel.send(`${msg.author} thank you for the feedback. My developer will work on it.`)
     }
 };
