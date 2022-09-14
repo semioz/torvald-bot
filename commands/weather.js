@@ -1,4 +1,4 @@
-import fetch, { AbortError } from 'node-fetch';
+import fetch from 'node-fetch';
 import { MessageEmbed } from "discord.js";
 
 export default {
