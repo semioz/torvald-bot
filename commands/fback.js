@@ -6,6 +6,6 @@ export default {
     async execute(msg) {
         let value = msg.content.slice(7)
         await msg.client.database.fetch(uuidv4(), value, msg.author, new Date().toJSON().slice(0, 10).replace(/-/g, '/'))
-        await msg.channel.send(`${msg.author} Thank you for the feedback ${msg.author}. My developer will work on it.`)
+        await msg.channel.send(`Thank you for the feedback ${msg.author}. My developer will work on it.`)
     }
 };
