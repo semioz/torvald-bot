@@ -3,6 +3,7 @@ import { MessageEmbed } from "discord.js";
 
 export default {
     name: "github",
+    description: "An overview of a GitHub account you've chosen.",
     execute(msg) {
         let values = (msg.content.slice((process.env.PREFIX).length).trim().split(/ +/))[1];
         return fetch(`https://api.github.com/users/${values}`)

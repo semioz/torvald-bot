@@ -2,6 +2,7 @@ import fetch from 'node-fetch';
 
 export default {
     name: "bitcoin",
+    description: "Current price of Bitcoin.",
     execute(msg) {
         return fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
             .then(res => {

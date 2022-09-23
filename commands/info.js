@@ -1,14 +1,25 @@
 import { MessageEmbed } from "discord.js";
+import bitcoin from "./bitcoin.js";
+import pomodoro from "./pomodoro.js";
+import fback from "./fback.js";
+import inspire from "./inspire.js";
+import meme from "./meme.js";
+import github from "./github.js";
+import weather from "./weather.js";
+import translate from "./translate.js";
+import ping from "./ping.js"
+import reddit from "./reddit.js"
 
 export default {
     name: "info",
+    description: "Learn more about Torvald Bot",
     execute(msg) {
         const infoEmbed = new MessageEmbed()
             .setColor('#143F6B')
             .setTitle("Commands")
             .setURL('https://github.com/semihberkayozturk/Torvald-Bot')
             .setAuthor({ name: "GitHub", url: 'https://github.com/semihberkayozturk/Torvald-Bot' })
-            .addFields({ name: '● $info', value: 'Learn more details about Torvald Bot.' }, { name: '● $inspire', value: "Torvald Bot sends inspirational quotes  from the world's most important philosiphers, inventors, scientists, religious figures, and leaders throughout history." }, { name: '● $pomodoro', value: "Torvald Bot starts a 25 minutes long Pomodoro session and sends you a message when it's finished." }, { name: '● $translate <text>', value: "With this command, Torvald Bot detects the language you've written and translates it to English." }, { name: '● $bitcoin', value: "Current price of Bitcoin." }, { name: '● $meme', value: "Torvald Bot shows programming memes." }, { name: '● $ping', value: "Ping stats of Discord and Torvald Bot." }, { name: '● $reddit <subreddit name>', value: "Random posts from a subreddit you've chosen." }, { name: '● $github <username>', value: "An overview of GitHub account you've chosen." }, { name: '● $weather <city name>', value: "Weather information of given city." }, { name: '● $fback <your message>', value: "Give feedback to the developer of Torvald Bot." })
+            .addFields({ name: '● $info', value: this.description }, { name: '● $inspire', value: inspire.description }, { name: '● $pomodoro', value: pomodoro.description }, { name: '● $translate <text>', value: translate.description }, { name: '● $bitcoin', value: bitcoin.description }, { name: '● $meme', value: meme.description }, { name: '● $ping', value: ping.description }, { name: '● $reddit <subreddit name>', value: reddit.description }, { name: '● $github <username>', value: github.description }, { name: '● $weather <city name>', value: weather.description }, { name: '● $fback <your message>', value: fback.description })
         msg.channel.send({ embeds: [infoEmbed] });
     }
 };

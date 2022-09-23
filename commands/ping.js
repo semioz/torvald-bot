@@ -2,6 +2,7 @@ import { MessageEmbed } from "discord.js";
 
 export default {
     name: "ping",
+    description: "Ping stats of Torvald Bot and Discord",
     execute(msg) {
         let ping_discord = msg.client.ws.ping
         let ping_bot = Date.now() - msg.createdTimestamp

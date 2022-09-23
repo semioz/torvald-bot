@@ -3,6 +3,7 @@ import { MessageEmbed } from "discord.js";
 
 export default {
     name: "meme",
+    description: "Torvald Bot sends programming memes",
     execute(msg) {
         meme("ProgrammerHumor").then(data => {
                 const memesEmbed = new MessageEmbed()

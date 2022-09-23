@@ -3,6 +3,7 @@ import { MessageEmbed } from "discord.js";
 
 export default {
     name: "weather",
+    description: "Weather information of selected city.",
     execute(msg) {
         let element = (msg.content.slice((process.env.PREFIX).length).trim().split(/ +/));
         let city = element.slice(1, element.length - 1).join(' ') + " " + element.slice(-1)

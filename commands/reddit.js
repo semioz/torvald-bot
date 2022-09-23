@@ -3,6 +3,7 @@ import { MessageEmbed } from "discord.js";
 
 export default {
     name: "reddit",
+    description: "Random posts from a subreddit you've chosen.",
     execute(msg) {
         let value = msg.content.slice((process.env.PREFIX).length).trim().split(/ +/);
         let subreddit = value[1]

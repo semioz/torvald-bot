@@ -2,6 +2,7 @@ import fetch from "node-fetch";
 
 export default {
     name: "inspire",
+    description: "Torvald Bot sends inspirational quotes  from the world's most important philosiphers, inventors, scientists, religious figures, and leaders throughout history.",
     execute(msg) {
         return fetch("https://zenquotes.io/api/random")
             .then(res => {
