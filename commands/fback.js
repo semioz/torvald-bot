@@ -1,4 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
+import redis from "redis";
+const client = redis.createClient(process.env.REDIS_URL)
+import util from "util";
 
 export default {
     name: "fback",

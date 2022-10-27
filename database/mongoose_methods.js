@@ -17,10 +17,10 @@ export const fetchAll = async(filter = {}) => {
 
 //Update the object
 export const update = async(message_id, update_id) => {
-        await Message.updateOne({ message_id }, update_id, { upsert: true })
+    await Message.updateOne({ message_id }, update_id, { upsert: true })
+}
 
-    }
-    //Delete an object
+//Delete an object
 export const deleteObj = async(message_id) => {
     await Message.deleteOne({ message_id })
 }
