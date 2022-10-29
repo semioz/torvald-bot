@@ -2,10 +2,12 @@ import redis from "redis";
 const redisClient = redis.createClient({
     url: process.env.REDIS_URL
 });
+
+redisClient.on("connect", () => console.log("Redis Connection Is Successful"));
 redisClient.on("error", (err) => console.log("Redis Client Error:", err));
 await redisClient.connect();
 
-//TODO: SEND ALL THE MESSAGES OF USER.
+//CREATED THIS COMMAND TO TEST REDIS
 
 export default {
     name: "get",
@@ -13,7 +15,7 @@ export default {
     async execute(msg) {
         let firstTime = Date.now();
         let value = msg.content.slice(5)
-        let hashKey = "";
+        let hashKey = "Messages";
 
         const cachedMessages = await redisClient.hGet(hashKey, value);
         if (cachedMessages) {
@@ -26,6 +28,6 @@ export default {
 
         redisClient.hSet(hashKey, value, JSON.stringify(message["message"]))
             //After 10 seconds, value expires and redis removes it from the cache.
-        redisClient.expire(hashKey, 10)
+        redisClient.expire(hashKey, 7200)
     }
 };
