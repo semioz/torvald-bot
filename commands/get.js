@@ -27,7 +27,6 @@ export default {
         await msg.reply(`Speed: ${Date.now()-firstTime} ${message["message"]}`)
 
         redisClient.hSet(hashKey, value, JSON.stringify(message["message"]))
-            //After 10 seconds, value expires and redis removes it from the cache.
         redisClient.expire(hashKey, 7200)
     }
 };
