@@ -8,13 +8,12 @@ export default client => {
 
         const commandName = client.commands.get(command)
 
-        if (!commandName) return;
+        if (!commandName) return msg.reply("Command not found!");
         try {
             commandName.execute(msg);
         } catch (e) {
             console.error(e)
-            msg.reply("Commant not found");
+            msg.reply("Command not found1!");
         }
-
     })
 };
