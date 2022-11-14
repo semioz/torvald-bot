@@ -1,5 +1,5 @@
 # Torvald Bot
-A multipurpose Discord bot written in JavaScript.
+A multipurpose Discord bot written in JavaScript. Currently hosted on Replit, planning to migrate to Google Cloud.
 
 * MongoDB
 * Redis
