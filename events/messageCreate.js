@@ -8,7 +8,7 @@ export default client => {
 
         const commandName = client.commands.get(command)
 
-        if (!commandName) return msg.reply("Command not found!");
+        if (!commandName) return msg.reply("Command not found! Type '$info' to see the commands.");
         try {
             commandName.execute(msg);
         } catch (e) {
