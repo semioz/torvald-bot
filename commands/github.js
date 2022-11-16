@@ -12,7 +12,7 @@ export default {
             })
             .then(data => {
                 if (data["company"] === null) {
-                    data["company"] = "No Information ❌"
+                    data["company"] = "No Information Found❌"
                 }
                 if (data["bio"] === null) {
                     data["bio"] = ""

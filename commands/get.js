@@ -8,6 +8,8 @@ redisClient.on("error", (err) => console.log("Redis Client Error:", err));
 await redisClient.connect();
 
 //CREATED THIS COMMAND TO TEST REDIS
+//TODO: USER TYPES THE COMMAND, ALL OF HIS/HER 
+//FEEDBACKS RETURNS TO HER/HIM
 
 export default {
     name: "get",
