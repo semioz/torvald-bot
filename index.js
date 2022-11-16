@@ -7,7 +7,6 @@ import Discord, { Collection } from "discord.js";
 import stayinAlive from "./server.js";
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 
-
 //MongoDB Connection
 await mongoose.connect(process.env.MONGO_URI)
     .then(() => {
