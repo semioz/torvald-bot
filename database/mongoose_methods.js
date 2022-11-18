@@ -10,6 +10,7 @@ export const fetch = async(message_id, message, username, date) => {
         return message_db
     }
 };
+
 export const redisDb = async(username, message_id) => {
     let message_db = await Message.findOne({ username });
 

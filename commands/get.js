@@ -15,13 +15,14 @@ export default {
     async execute(msg) {
         let firstTime = Date.now();
         let value = msg.content.slice(5)
-        let hashKey = "Messages";
+        let hashKey = "Feedbacks";
 
         const cachedMessages = await redisClient.hGet(hashKey, value);
         if (cachedMessages) {
             console.log("Serving from cache!")
             return msg.reply(`Speed:${Date.now()-firstTime} ${JSON.parse(cachedMessages)}`)
         }
+
         let message = await msg.client.database.fetch(value)
         console.log("Serving from MongoDB!")
         await msg.reply(`Speed: ${Date.now()-firstTime} ${message["message"]}`)

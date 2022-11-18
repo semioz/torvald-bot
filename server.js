@@ -1,5 +1,8 @@
 import express from "express";
+import mongoSanitize from "express-mongo-sanitize";
 const server = express();
+
+server.use(mongoSanitize())
 
 server.all("/", (req, res) => {
     res.send("Torvald Bot is up and running.");
