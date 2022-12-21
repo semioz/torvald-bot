@@ -1,16 +1,17 @@
 import fetch from 'node-fetch';
 import { MessageEmbed } from "discord.js";
+import { CommandType } from '../interfaces/Command';
 
 export default {
     name: "github",
     description: "An overview of a GitHub account you've chosen.",
-    execute(msg) {
+    execute(msg:CommandType) {
         let values = (msg.content.slice((process.env.PREFIX).length).trim().split(/ +/))[1];
         return fetch(`https://api.github.com/users/${values}`)
             .then(res => {
                 return res.json()
             })
-            .then(data => {
+            .then((data:any) => {
                 if (data["company"] === null) {
                     data["company"] = "No Information Found❌"
                 }

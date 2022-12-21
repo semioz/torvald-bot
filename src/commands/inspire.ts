@@ -8,7 +8,7 @@ export default {
             .then(res => {
                 return res.json()
             })
-            .then(data => {
+            .then((data:any) => {
                 return data[0]["q"] + " -" + data[0]["a"]
             })
             .then(quote => msg.reply(quote));

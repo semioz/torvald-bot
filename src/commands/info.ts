@@ -1,19 +1,21 @@
 import { MessageEmbed } from "discord.js";
-import bitcoin from "./bitcoin.js";
-import pomodoro from "./pomodoro.js";
-import fback from "./fback.js";
-import inspire from "./inspire.js";
-import meme from "./meme.js";
-import github from "./github.js";
-import weather from "./weather.js";
-import translate from "./translate.js";
-import ping from "./ping.js"
-import reddit from "./reddit.js"
+import { CommandType } from "../interfaces/Command";
+import bitcoin from "./bitcoin";
+import weather from "./weather";
+import inspire from "./inspire";
+import fback from "./fback";
+import meme from "./meme";
+import reddit from "./reddit";
+import pomodoro from "./pomodoro";
+import ping from "./ping";
+import github from "./github";
+import translate from "./translate";
 
-export default {
+
+export default{
     name: "info",
     description: "Learn more about Torvald Bot",
-    execute(msg) {
+    execute(msg:CommandType) {
         const infoEmbed = new MessageEmbed()
             .setColor('#143F6B')
             .setTitle("Commands")

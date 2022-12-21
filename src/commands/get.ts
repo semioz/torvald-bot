@@ -1,11 +1,11 @@
-import redis from "redis";
+import * as redis from "redis";
 const redisClient = redis.createClient({
     url: process.env.REDIS_URL
 });
 
 redisClient.on("connect", () => console.log("Redis Connection Is Successful"));
 redisClient.on("error", (err) => console.log("Redis Client Error:", err));
-await redisClient.connect();
+redisClient.connect();
 
 //CREATED THIS COMMAND TO TEST REDIS
 
