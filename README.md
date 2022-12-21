@@ -1,5 +1,5 @@
 # Torvald Bot
-A multipurpose Discord bot written in JavaScript. Currently hosted on Heroku, planning to migrate to Google Cloud.
+A multipurpose Discord bot written in TypeScript. Currently hosted on Heroku, planning to migrate to Google Cloud.
 
 * MongoDB
 * Redis
