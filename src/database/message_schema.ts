@@ -1,12 +1,19 @@
-import mongoose from "mongoose";
+import {Schema,model} from "mongoose";
 
-let firstSchema = new mongoose.Schema({
+interface messageType {
+    message_id: string,
+    message:string,
+    username:string,
+    date:Date                                                
+}
+
+let firstSchema = new Schema<messageType>({
     message_id: { type: String, unique: true, required: true },
     message: { type: String, default: "No Message" },
     username: { type: String, required: true },
     date: { type: Date }
 })
 
-let Message = mongoose.model("Message", firstSchema)
+let Message = model<messageType>("Message", firstSchema)
 
 export default Message;

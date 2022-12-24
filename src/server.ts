@@ -1,11 +1,11 @@
-import express from "express";
+import express,{Request, Response} from "express";
 import mongoSanitize from "express-mongo-sanitize";
 const server = express();
 
 server.use(mongoSanitize())
 
-server.all("/", (req, res) => {
-    res.send("Torvald Bot is up and running.");
+server.all("/", (req:Request, res:Response) => {
+    res.send("Torvald Bot is up and running on this server.");
 })
 
 function stayinAlive() {

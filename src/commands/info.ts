@@ -11,7 +11,6 @@ import ping from "./ping";
 import github from "./github";
 import translate from "./translate";
 
-
 export default{
     name: "info",
     description: "Learn more about Torvald Bot",
