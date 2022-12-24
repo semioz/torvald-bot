@@ -7,7 +7,6 @@ import Discord, { Collection } from "discord.js";
 import stayinAlive from "./server";
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 
-//MongoDB Connection
 connect(process.env.MONGO_URI)
     .then(() => {
         console.log("Database Connection Is Successful!")

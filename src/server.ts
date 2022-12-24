@@ -6,7 +6,7 @@ server.use(mongoSanitize())
 
 server.all("/", (req:Request, res:Response) => {
     res.send("Torvald Bot is up and running on this server.");
-})
+});
 
 function stayinAlive() {
     server.listen(process.env.PORT || 3000, function() {

@@ -1,7 +1,7 @@
 {
     "name": "torvald-bot",
     "version": "1.0.0",
-    "description": "A multipurpose Discord bot written in JavaScript.",
+    "description": "A multipurpose Discord bot written in TypeScript.",
     "main": "./prod/index.js",
     "scripts": {
         "build": "tsc",
