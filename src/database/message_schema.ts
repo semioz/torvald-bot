@@ -1,6 +1,6 @@
 import {Schema,model} from "mongoose";
 
-interface messageType {
+export interface messageType {
     message_id: string,
     message:string,
     username:string,

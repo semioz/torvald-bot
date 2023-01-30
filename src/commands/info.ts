@@ -1,15 +1,15 @@
 import { MessageEmbed } from "discord.js";
 import { CommandType } from "../interfaces/Command";
-import bitcoin from "./bitcoin";
-import weather from "./weather";
 import inspire from "./inspire";
 import fback from "./fback";
 import meme from "./meme";
 import reddit from "./reddit";
 import pomodoro from "./pomodoro";
-import ping from "./ping";
 import github from "./github";
 import translate from "./translate";
+import ping from "./ping";
+import weather from "./weather";
+import bitcoin from "./bitcoin";
 
 export default{
     name: "info",

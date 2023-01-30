@@ -5,7 +5,7 @@ import * as database from "./database/mongoose_methods.js";
 import {connect} from "mongoose";
 import Discord, { Collection } from "discord.js";
 import stayinAlive from "./server";
-const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
+const client:Discord.Client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 
 connect(process.env.MONGO_URI)
     .then(() => {
@@ -14,7 +14,7 @@ connect(process.env.MONGO_URI)
     .catch(err => console.log(err))
 
 //Event Loader
-let readEvents = readdirSync(__dirname+"/events").forEach(async file => {
+let readEvents = readdirSync(__dirname+"/events").forEach(async (file:string) => {
     const event = await
     import (`./events/`+ file).then(e => e.default)
     event(client)

@@ -6,7 +6,8 @@ export interface CommandType {
     author: {
         id:Snowflake
         username:string,
-        tag:string
+        tag:string,
+        send:(message:string | object) => void,
     },
     channel:{
         id:string,
